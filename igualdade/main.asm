@@ -8,29 +8,29 @@ section .data
 	section .text
 	global _start
 
-	_start:
-		mov rax,30
-		mov rbx,30
-		cmp rax,rbx
-		je is_igual
-		jmp not_igual
-	
-	is_igual:
-		mov rax,1
-		mov rdi,1
-		mov rsi,msg_igual
-		mov rdx,len_igual
-		syscall
-		jmp exit
+_start:
+    mov rax,30
+    mov rbx,30
+    cmp rax,rbx
+    je is_igual
+    jmp not_igual
 
-	not_igual:
-		mov rax,1
-		mov rdi,1
-		mov rsi,msg_diff
-		mov rdx,len_diff
-		syscall
+is_igual:
+    mov rax,1
+    mov rdi,1
+    mov rsi,msg_igual
+    mov rdx,len_igual
+    syscall
+    jmp exit
 
-	exit:
-		mov rax,60
-		xor rdi,rdi
-		syscall
+not_igual:
+    mov rax,1
+    mov rdi,1
+    mov rsi,msg_diff
+    mov rdx,len_diff
+    syscall
+
+exit:
+    mov rax,60
+    xor rdi,rdi
+    syscall
